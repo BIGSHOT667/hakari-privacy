@@ -3,101 +3,258 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hakari — Politique de Confidentialité</title>
+<title>Hakari · Confidentialité</title>
 <style>
-  :root { --bg: #0a0e1a; --card: #111827; --border: #1e2d4a; --text: #e5e7eb; --muted: #9ca3af; --accent: #6366f1; --green: #10b981; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; }
-  header { background: linear-gradient(135deg, #1a1f3a 0%, #0f1528 100%); border-bottom: 1px solid var(--border); padding: 32px 24px; text-align: center; }
-  .bot-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #8b5cf6); display: inline-flex; align-items: center; justify-content: center; font-size: 36px; margin-bottom: 16px; border: 3px solid #6366f1; }
-  h1 { font-size: 2rem; font-weight: 900; margin-bottom: 6px; background: linear-gradient(90deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .subtitle { color: var(--muted); font-size: 0.95rem; }
-  .container { max-width: 820px; margin: 0 auto; padding: 40px 24px 60px; }
-  .updated { background: #1a2035; border: 1px solid var(--border); border-radius: 10px; padding: 12px 18px; margin-bottom: 32px; color: var(--muted); font-size: 0.875rem; }
-  .updated span { color: var(--accent); font-weight: 700; }
-  section { margin-bottom: 36px; }
-  h2 { font-size: 1.2rem; font-weight: 800; color: #a78bfa; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-  p, li { color: #d1d5db; line-height: 1.75; font-size: 0.95rem; }
-  ul { padding-left: 20px; }
-  li { margin-bottom: 6px; }
-  .badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 800; }
-  .badge-green { background: #064e3b; color: #6ee7b7; border: 1px solid #065f46; }
-  .badge-red { background: #450a0a; color: #fca5a5; border: 1px solid #7f1d1d; }
-  .table { width: 100%; border-collapse: collapse; margin-top: 14px; }
-  .table th { background: #1a2035; color: #a78bfa; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
-  .table td { padding: 12px 14px; border-bottom: 1px solid #1a2035; font-size: 0.9rem; color: #d1d5db; vertical-align: top; }
-  .table tr:last-child td { border-bottom: none; }
-  .notice { background: #1e1a2e; border-left: 4px solid var(--accent); border-radius: 0 10px 10px 0; padding: 14px 18px; margin-top: 14px; }
-  footer { text-align: center; padding: 24px; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--border); }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d0d0f;
+  --surface: #141416;
+  --border: #222226;
+  --text: #f0f0f2;
+  --sub: #8888a0;
+  --accent: #c8303a;
+  --accent-dim: rgba(200,48,58,0.12);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(13,13,15,0.92);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+.nav-left { display: flex; align-items: center; gap: 10px; }
+.nav-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.nav-name { font-weight: 700; font-size: 0.9rem; letter-spacing: 0.03em; }
+.nav-tag { font-size: 0.78rem; color: var(--sub); border: 1px solid var(--border); padding: 2px 10px; border-radius: 4px; }
+
+/* ── HERO ── */
+.hero {
+  max-width: 680px;
+  margin: 72px auto 64px;
+  padding: 0 32px;
+}
+.hero-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+h1 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero-meta { color: var(--sub); font-size: 0.85rem; }
+
+/* ── LAYOUT ── */
+.layout {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 32px 100px;
+}
+
+/* ── SECTION ── */
+.section { margin-bottom: 52px; }
+
+h2 {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--sub);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+p { color: #c0c0cc; margin-bottom: 14px; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--text); font-weight: 600; }
+
+/* ── DATA LIST ── */
+.data-list { list-style: none; }
+.data-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.data-list li:first-child { border-top: 1px solid var(--border); }
+.data-marker {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+.data-label { font-weight: 600; font-size: 0.9rem; color: var(--text); margin-bottom: 2px; }
+.data-desc { font-size: 0.83rem; color: var(--sub); }
+
+/* ── CALLOUT ── */
+.callout {
+  background: var(--accent-dim);
+  border: 1px solid rgba(200,48,58,0.25);
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin-top: 24px;
+  font-size: 0.875rem;
+  color: #e8a0a4;
+}
+
+.callout-green {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+  color: #6ee7b7;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 32px;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--sub);
+  font-size: 0.8rem;
+}
 </style>
 </head>
 <body>
-<header>
-  <div class="bot-icon">⚔️</div>
-  <h1>Hakari</h1>
-  <div class="subtitle">Bot Discord d'économie — Politique de Confidentialité</div>
-</header>
-<div class="container">
-  <div class="updated">Dernière mise à jour : <span>Juin 2025</span> — Ce document concerne le bot Discord <strong>Hakari</strong>.</div>
 
-  <section>
-    <h2>📋 Résumé</h2>
-    <p>Hakari est un bot Discord d'économie et de gameplay. Cette politique explique quelles données sont collectées, pourquoi, et comment vous pouvez en demander la suppression. <strong>Hakari ne collecte aucun message, aucun nom d'utilisateur, aucun email ni aucune information personnelle identifiable.</strong></p>
-  </section>
+<nav>
+  <div class="nav-left">
+    <div class="nav-dot"></div>
+    <span class="nav-name">Hakari</span>
+  </div>
+  <span class="nav-tag">Politique de confidentialité</span>
+</nav>
 
-  <section>
-    <h2>📦 Données collectées</h2>
-    <table class="table">
-      <thead><tr><th>Donnée</th><th>Description</th><th>Finalité</th></tr></thead>
-      <tbody>
-        <tr><td>Discord User ID</td><td>Identifiant numérique unique attribué par Discord</td><td>Lier la progression économique à chaque joueur</td></tr>
-        <tr><td>Discord Guild ID</td><td>Identifiant numérique du serveur Discord</td><td>Isoler les données par serveur</td></tr>
-        <tr><td>Solde fictif (cash / banque)</td><td>Monnaie virtuelle dans le jeu</td><td>Fonctionnement du système économique</td></tr>
-        <tr><td>Inventaire d'items</td><td>Liste d'objets virtuels achetés ou gagnés</td><td>Gestion de la boutique en jeu</td></tr>
-        <tr><td>Cooldowns de commandes</td><td>Timestamps des dernières utilisations de commandes</td><td>Limiter les abus et respecter les délais de jeu</td></tr>
-        <tr><td>Données de gameplay</td><td>Pouvoirs équipés, doigts Sukuna, niveau de sang, stacks, etc.</td><td>Mécaniques de jeu des personnages JJK</td></tr>
-        <tr><td>Appartenance entreprise</td><td>Membership dans une entreprise fictive du jeu</td><td>Système d'entreprises en jeu</td></tr>
-        <tr><td>Logs d'administration</td><td>Action effectuée, ID de la cible, date (via le panel admin)</td><td>Audit et traçabilité des actions des administrateurs</td></tr>
-      </tbody>
-    </table>
-    <div class="notice">⚠️ <strong>Hakari ne stocke jamais</strong> : noms d'utilisateur, pseudos, emails, adresses IP, numéros de téléphone, contenu de messages Discord, ni aucune donnée bancaire réelle.</div>
-  </section>
-
-  <section>
-    <h2>🎯 Finalité des données</h2>
-    <p>Les données collectées sont utilisées exclusivement pour :</p>
-    <ul>
-      <li>Faire fonctionner les commandes économiques du bot (soldes, transactions, cooldowns)</li>
-      <li>Sauvegarder la progression de jeu entre les sessions</li>
-      <li>Permettre aux administrateurs de gérer le serveur via le panel</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>🕐 Durée de conservation</h2>
-    <p>Les données sont conservées tant que le bot est actif sur le serveur. Elles peuvent être supprimées à tout moment sur demande (voir section suivante). Les logs d'administration sont conservés pour une durée maximale de 250 entrées glissantes.</p>
-  </section>
-
-  <section>
-    <h2>🗑️ Droit à la suppression</h2>
-    <p>Pour demander la suppression de vos données, contactez l'administrateur du serveur Discord sur lequel vous utilisez Hakari. L'administrateur peut effectuer une réinitialisation complète de votre profil via le panel d'administration.</p>
-  </section>
-
-  <section>
-    <h2>🔒 Partage des données</h2>
-    <p>Les données collectées par Hakari ne sont <strong>jamais partagées, vendues ou transmises à des tiers</strong>. Elles restent sur le serveur d'hébergement du bot et sont accessibles uniquement aux administrateurs du serveur Discord concerné.</p>
-  </section>
-
-  <section>
-    <h2>👶 Mineurs</h2>
-    <p>Hakari ne collecte aucune donnée permettant d'identifier l'âge d'un utilisateur. Le bot est destiné aux serveurs Discord respectant les <a href="https://discord.com/terms" style="color:#a78bfa">Conditions d'utilisation de Discord</a> (13 ans minimum).</p>
-  </section>
-
-  <section>
-    <h2>📬 Contact</h2>
-    <p>Pour toute question relative à vos données, contactez l'administrateur de votre serveur Discord ou rejoignez le serveur de support du bot.</p>
-  </section>
+<div class="hero">
+  <div class="hero-label">Confidentialité</div>
+  <h1>Ce que Hakari<br>sait de toi</h1>
+  <div class="hero-meta">Mis à jour en juin 2025 — Bot Discord d'économie</div>
 </div>
-<footer>© 2025 Hakari Bot — Politique de Confidentialité</footer>
+
+<div class="layout">
+
+  <div class="section">
+    <h2>L'essentiel</h2>
+    <p>Hakari est un bot d'économie et de gameplay. Il stocke des données purement liées au jeu — jamais ton nom, jamais tes messages, jamais ton email. <strong>Uniquement ce dont le bot a besoin pour fonctionner.</strong></p>
+  </div>
+
+  <div class="section">
+    <h2>Données collectées</h2>
+    <ul class="data-list">
+      <li>
+        <div class="data-marker"></div>
+        <div>
+          <div class="data-label">Ton Discord User ID</div>
+          <div class="data-desc">Le numéro unique que Discord t'attribue. Permet de lier ta progression à ton compte.</div>
+        </div>
+      </li>
+      <li>
+        <div class="data-marker"></div>
+        <div>
+          <div class="data-label">L'ID du serveur (Guild ID)</div>
+          <div class="data-desc">Pour que chaque serveur ait ses propres données séparées.</div>
+        </div>
+      </li>
+      <li>
+        <div class="data-marker"></div>
+        <div>
+          <div class="data-label">Économie virtuelle (cash, banque, inventaire)</div>
+          <div class="data-desc">Monnaie fictive et objets du jeu. Aucune valeur réelle.</div>
+        </div>
+      </li>
+      <li>
+        <div class="data-marker"></div>
+        <div>
+          <div class="data-label">Cooldowns de commandes</div>
+          <div class="data-desc">Timestamps des dernières utilisations pour gérer les délais entre commandes.</div>
+        </div>
+      </li>
+      <li>
+        <div class="data-marker"></div>
+        <div>
+          <div class="data-label">Données de gameplay JJK</div>
+          <div class="data-desc">Pouvoirs, doigts Sukuna, niveau de sang, stacks — informations de progression dans le jeu.</div>
+        </div>
+      </li>
+      <li>
+        <div class="data-marker"></div>
+        <div>
+          <div class="data-label">Appartenance entreprise</div>
+          <div class="data-desc">Membership fictif dans une entreprise du jeu.</div>
+        </div>
+      </li>
+      <li>
+        <div class="data-marker"></div>
+        <div>
+          <div class="data-label">Logs d'administration</div>
+          <div class="data-desc">Actions effectuées via le panel admin (ID de l'admin, cible, action, date).</div>
+        </div>
+      </li>
+    </ul>
+    <div class="callout callout-green">Hakari ne stocke jamais ton nom, pseudo, avatar, email, adresse IP, ni aucun message que tu envoies sur Discord.</div>
+  </div>
+
+  <div class="section">
+    <h2>Pourquoi ces données</h2>
+    <p>Sans ces données, le bot ne peut pas sauvegarder ta progression ni appliquer les cooldowns. C'est le strict minimum pour fonctionner.</p>
+  </div>
+
+  <div class="section">
+    <h2>Partage & tiers</h2>
+    <p>Aucune donnée n'est partagée, vendue, ni transmise à qui que ce soit. Les données restent sur le serveur d'hébergement du bot, accessibles uniquement aux administrateurs du serveur Discord concerné.</p>
+  </div>
+
+  <div class="section">
+    <h2>Suppression</h2>
+    <p>Contacte un administrateur de ton serveur Discord pour demander la suppression de tes données. Il peut réinitialiser ton profil complet via le panel d'administration.</p>
+  </div>
+
+  <div class="section">
+    <h2>Contact</h2>
+    <p>Pour toute question, passe par le serveur de support du bot ou contacte directement l'administrateur de ton serveur.</p>
+  </div>
+
+</div>
+
+<footer>
+  <span>Hakari Bot · 2025</span>
+  <span>Pour Discord — BIGSHOT667</span>
+</footer>
+
 </body>
 </html>
